@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Game Key Shop</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <button id="adminLoginBtn">Đăng nhập Admin</button>
+        <button id="adminLogoutBtn" class="admin-only">Đăng xuất</button>
+    </header>
+
+    <main id="adminDashboard" class="admin-only">
+        <section id="userManagement">
+            <h2>Quản lý người dùng</h2>
+            <input type="text" id="userSearchInput" placeholder="Tìm kiếm người dùng...">
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Email</th>
+                        <th>Số dư</th>
+                        <th>Mã chuyển khoản</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu người dùng sẽ được thêm vào đây bằng JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="transactions">
+            <h2>Quản lý giao dịch</h2>
+            <table id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Người dùng</th>
+                        <th>Loại</th>
+                        <th>Số tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày</th>
+                        <th>Chi tiết</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Transaction data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="games">
+            <h2>Quản lý game</h2>
+            <button id="addGameBtn">Thêm game mới</button>
+            <form id="addGameForm" style="display:none;">
+                <input type="text" id="newGameName" placeholder="Tên game" required>
+                <select id="newGameStore" required>
+                    <!-- Populate this dynamically with available game stores -->
+                </select>
+                <button type="submit">Thêm Game</button>
+            </form>
+            <table id="gameTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên game</th>
+                        <th>Số lượng key</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Game data will be populated here -->
+                </tbody>
+            </table>
+            <div id="gameDetailsContainer" style="display:none;">
+                <!-- Game details will be displayed here -->
+            </div>
+        </section>
+
+        <section id="virtualCurrencies">
+            <h2>Quản lý tiền ảo</h2>
+            <form id="addVirtualCurrencyForm" onsubmit="addVirtualCurrency(event)">
+                <input type="text" id="newCurrencyName" placeholder="Tên tiền ảo" required>
+                <input type="number" id="newExchangeRate" placeholder="Tỷ giá" required step="0.01">
+                <button type="submit">Thêm tiền ảo</button>
+            </form>
+            <table id="virtualCurrencyTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Tỷ giá</th>
+                        <th>Hành đng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Virtual currency data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="pendingDeposits">
+            <h2>Quản lý nạp tiền</h2>
+            <table id="pendingDepositTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Người dùng</th>
+                        <th>Số tiền</th>
+                        <th>Mã chuyển tiền</th>
+                        <th>Ngày</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Pending deposits will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="manualDeposit">
+            <h2>Nạp tiền thủ công</h2>
+            <form id="manualDepositForm" onsubmit="addManualDeposit(event)">
+                <input type="number" id="manualDepositUserId" placeholder="ID người dùng" required>
+                <input type="number" id="manualDepositAmount" placeholder="Số tiền" required step="1000">
+                <button type="submit">Nạp tiền</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="shared-data.js"></script>
+    <script src="admin-auth.js"></script>
+    <script src="admin-script.js"></script>
+    <script src="state-manager.js"></script>
+    <script src="data-manager.js"></script>
+
+    <!-- Các script khác -->
+</body>
+</html>
